@@ -42,6 +42,7 @@ app.get('/get/the/code', (req, res) => {
 
 //Step 2: Get the code from the URL
 app.get('/give/me/the/code', (req, res) => {
+    //before continue, you should check that req.query.state is the same that the state you sent
     res.render('exchange-code', { code: req.query.code, state: req.query.state });
 });
 
