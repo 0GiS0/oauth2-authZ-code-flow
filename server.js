@@ -17,12 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.render('index');
 });
 
 //Set 1: Ask the authorization code
-app.get('/get/the/code', function (req, res) {
+app.get('/get/the/code', (req, res) => {
 
 
     const Authorization_Endpoint = `https://login.microsoftonline.com/${process.env.TENANT_ID}/oauth2/authorize`;
@@ -41,7 +41,7 @@ app.get('/get/the/code', function (req, res) {
 });
 
 //Step 2: Get the code from the URL
-app.get('/give/me/the/code', function (req, res) {
+app.get('/give/me/the/code', (req, res) => {
     res.render('exchange-code', { code: req.query.code, state: req.query.state });
 });
 
