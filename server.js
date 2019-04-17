@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
 //Set 1: Ask the authorization code
 app.get('/get/the/code', (req, res) => {
 
-
     const Authorization_Endpoint = `https://login.microsoftonline.com/${process.env.TENANT_ID}/oauth2/authorize`;
     const Response_Type = 'code';
     const Client_Id = process.env.CLIENT_ID;
