@@ -28,7 +28,7 @@ app.get('/get/the/code', (req, res) => {
     const Response_Type = 'code';
     const Client_Id = process.env.CLIENT_ID;
     const Redirect_Uri = 'http://localhost:8000/give/me/the/code';
-    const Scope = 'https://graph.microsoft.com/User.Read';
+    const Scope = process.env.SCOPE;
     const State = 'ThisIsMyStateValue';
 
     let url = `${Authorization_Endpoint}?response_type=${Response_Type}&client_id=${Client_Id}&redirect_uri=${Redirect_Uri}&scope=${Scope}&state=${State}`;
@@ -54,7 +54,7 @@ app.post('/exchange/the/code/for/a/token', (req, res) => {
     const Redirect_Uri = 'http://localhost:8000/give/me/the/code';
     const Client_Id = process.env.CLIENT_ID;
     const Client_Secret = process.env.CLIENT_SECRET;
-    const Scope = 'https://graph.microsoft.com/User.Read';
+    const Scope = process.env.SCOPE;
 
     let body = `grant_type=${Grant_Type}&code=${Code}&redirect_uri=${encodeURIComponent(Redirect_Uri)}&client_id=${Client_Id}&client_secret=${Client_Secret}&scope=${encodeURIComponent(Scope)}`;
 
